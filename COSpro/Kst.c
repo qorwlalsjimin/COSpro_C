@@ -16,12 +16,29 @@ int solution() {
     int arr_row_len = 4;
     int arr_col_len = 4;
     int k = 2;
+    int size = arr_col_len * arr_row_len;
 
+    int swap = 0;
+    for (int i = 0; i < size; i++) { //0~7
+        for (int j = 0; j < size - 1; j++) { //0~7
+
+            if (*(*arr + j) > *(*arr + j + 1)) {
+                swap = *(*arr + j);
+                *(*arr + j) = *(*arr + j + 1);
+                *(*arr + j + 1) = swap;
+            }
+        }
+    }
     
 
-    for (int i = 0; i < arr_row_len; i++)
-        for (int j = 0; j < arr_col_len; j++)
+    for (int i = 0; i < arr_row_len; i++) {
+        for (int j = 0; j < arr_col_len; j++) {
             if ((4 * i + j + 1) == k) answer = arr[i][j];
+            printf("%d\t", arr[i][j]);
+        }
+        printf("\n");
+    }
+
     
     return answer;
 }
